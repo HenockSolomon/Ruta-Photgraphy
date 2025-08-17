@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ruta’s Photography</title>
+  <style>
+    :root{
+      /* Fern green + cream palette */
+      --fern:#4F7942;          /* Fern Green */
+      --fern-700:#416736;
+      --cream:#DFCAA0;         /* Warm Cream (you mentioned #DFCAA — that isn’t a valid 6‑digit hex; using #DFCAA0 here) */
+      --ink:#2E2E2E;
+      --ink-60: rgba(46,46,46,.6);
+      --paper:#FFFFFF;
+      --shadow: 0 10px 30px rgba(0,0,0,.08);
+      --radius: 18px;
+    }
+    html,body{margin:0;padding:0;font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;color:var(--ink);background:var(--cream);}
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1100px, 90vw);margin-inline:auto}
+    header{position:sticky;top:0;z-index:40;background:linear-gradient(180deg, rgba(223,202,160,0.95), rgba(223,202,160,0.70));backdrop-filter:saturate(1.2) blur(6px);}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .logo{font-weight:800;letter-spacing:.6px}
+    .badge{background:var(--fern);color:white;padding:.45rem .8rem;border-radius:999px;font-weight:600}
+    .btn{display:inline-block;padding:.9rem 1.1rem;border-radius:999px;border:2px solid var(--fern);color:var(--fern);font-weight:700;box-shadow:var(--shadow);transition:.2s ease}
+    .btn:hover{transform:translateY(-1px);}
+    .btn.fill{background:var(--fern);color:white}
+    .section{padding:64px 0}
+    .hero{padding:86px 0 70px;background:
+      radial-gradient(90% 120% at 20% 10%, rgba(79,121,66,.09), transparent 60%),
+      radial-gradient(70% 100% at 100% 0%, rgba(79,121,66,.07), transparent 60%)
+    }
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center}
+    .card{background:var(--paper);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+    .card.pad{padding:28px}
+    .title{font-size:clamp(32px, 3.2vw, 46px);line-height:1.08;margin:0 0 10px;font-weight:900}
+    .subtitle{color:var(--ink-60);font-size:1.05rem;margin:.2rem 0 1.2rem}
+
+    /* Portfolio */
+    .grid{display:grid;gap:16px}
+    .grid.portfolio{grid-template-columns: repeat(12, 1fr)}
+    .grid.portfolio .item{grid-column: span 4; border-radius:16px; overflow:hidden; box-shadow:var(--shadow)}
+    .grid.portfolio .item img{width:100%;height:260px;object-fit:cover;display:block}
+
+    /* Packages */
+    .packages{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .price{font-size:1.8rem;font-weight:900;color:var(--fern)}
+    .pill{display:inline-block;background:rgba(79,121,66,.08);color:var(--fern-700);padding:.35rem .7rem;border-radius:999px;font-weight:700;margin-right:6px;margin-bottom:6px}
+
+    /* Booking */
+    form{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    label{font-weight:700;font-size:.9rem}
+    input, select, textarea{padding:.9rem;border-radius:12px;border:1.5px solid rgba(0,0,0,.12);background:white}
+    textarea{min-height:140px;grid-column:span 2}
+    .actions{grid-column:span 2;display:flex;gap:10px;align-items:center}
+    .calendar-embed{background:var(--paper);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
+
+    /* About */
+    .about{display:grid;grid-template-columns: .9fr 1.1fr; gap:24px; align-items:center}
+    .about img{border-radius:16px; box-shadow:var(--shadow); width:100%; height:100%; object-fit:cover}
+
+    /* Footer */
+    footer{padding:40px 0 70px;border-top:1px solid rgba(0,0,0,.08)}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero-grid, .packages, .about, form{grid-template-columns:1fr}
+      .grid.portfolio .item{grid-column: span 6}
+      .grid.portfolio .item img{height:220px}
+    }
+    @media (max-width: 640px){
+      .grid.portfolio{grid-template-columns: repeat(6, 1fr)}
+      .grid.portfolio .item{grid-column: span 6}
+      .hero{padding-top:70px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">Ruta’s <span class="badge">Photography</span></div>
+      <nav>
+        <a href="#portfolio">Portfolio</a> · 
+        <a href="#packages">Packages</a> · 
+        <a href="#booking">Book</a> · 
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero section">
+      <div class="container hero-grid">
+        <div class="card pad">
+          <h1 class="title">Capturing life’s beautiful moments.</h1>
+          <p class="subtitle">Elegant, emotive photography for weddings, portraits, and events. Simple, transparent packages with easy online booking.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn fill" href="#booking">Book a session</a>
+            <a class="btn" href="#portfolio">View portfolio</a>
+          </div>
+        </div>
+        <div class="card" aria-hidden="true">
+          <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1600&auto=format&fit=crop" alt="Camera and photo setup" style="width:100%;height:100%;object-fit:cover;display:block"/>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="portfolio" class="section">
+      <div class="container">
+        <h2 class="title" style="font-size:2rem">Portfolio</h2>
+        <p class="subtitle">Selected work across weddings, portraits, and events.</p>
+        <div class="grid portfolio">
+          <figure class="item"><img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200&auto=format&fit=crop" alt="Wedding moment"/></figure>
+          <figure class="item"><img src="https://images.unsplash.com/photo-1526178611243-3e3aa77a9f6f?q=80&w=1200&auto=format&fit=crop" alt="Portrait"/></figure>
+          <figure class="item"><img src="https://images.unsplash.com/photo-1505236732171-72a5b19b69b9?q=80&w=1200&auto=format&fit=crop" alt="Event"/></figure>
+          <figure class="item"><img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=80&w=1200&auto=format&fit=crop" alt="Details"/></figure>
+          <figure class="item"><img src="https://images.unsplash.com/photo-1520975693416-35a0d49b7b66?q=80&w=1200&auto=format&fit=crop" alt="Couple"/></figure>
+          <figure class="item"><img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=1200&auto=format&fit=crop" alt="Creative"/></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Packages -->
+    <section id="packages" class="section" style="background:rgba(255,255,255,.6)">
+      <div class="container">
+        <h2 class="title" style="font-size:2rem">Packages</h2>
+        <p class="subtitle">Straightforward options. Custom quotes available.</p>
+        <div class="packages">
+          <div class="card pad">
+            <h3>Portrait Mini</h3>
+            <p class="price">£149</p>
+            <p><span class="pill">45 mins</span><span class="pill">10 edits</span><span class="pill">1 location</span></p>
+            <p>Perfect for headshots or quick lifestyle portraits.</p>
+            <a class="btn" href="#booking">Book Portrait Mini</a>
+          </div>
+          <div class="card pad">
+            <h3>Events</h3>
+            <p class="price">£399</p>
+            <p><span class="pill">2 hours</span><span class="pill">40 edits</span><span class="pill">Gallery</span></p>
+            <p>Coverage for birthdays, engagements, and small events.</p>
+            <a class="btn" href="#booking">Book Events</a>
+          </div>
+          <div class="card pad">
+            <h3>Weddings</h3>
+            <p class="price">From £899</p>
+            <p><span class="pill">Half / Full day</span><span class="pill">Curated album</span><span class="pill">Consultation</span></p>
+            <p>Timeless storytelling for your special day.</p>
+            <a class="btn" href="#booking">Enquire Weddings</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking -->
+    <section id="booking" class="section">
+      <div class="container">
+        <h2 class="title" style="font-size:2rem">Book a Session</h2>
+        <p class="subtitle">Choose your session type and send a request. We’ll confirm availability by email. (You can embed Calendly or TidyCal below for live slots.)</p>
+        <div class="card pad">
+          <form onsubmit="event.preventDefault(); alert('Thanks! Your request has been submitted.'); this.reset();">
+            <div>
+              <label for="name">Full name</label><br/>
+              <input id="name" name="name" placeholder="Your name" required />
+            </div>
+            <div>
+              <label for="email">Email</label><br/>
+              <input id="email" name="email" type="email" placeholder="you@example.com" required />
+            </div>
+            <div>
+              <label for="phone">Phone</label><br/>
+              <input id="phone" name="phone" type="tel" placeholder="Optional" />
+            </div>
+            <div>
+              <label for="type">Session type</label><br/>
+              <select id="type" name="type" required>
+                <option value="" disabled selected>Select a session</option>
+                <option>Portrait</option>
+                <option>Event</option>
+                <option>Wedding</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div>
+              <label for="date">Preferred date</label><br/>
+              <input id="date" name="date" type="date" />
+            </div>
+            <div>
+              <label for="time">Preferred time</label><br/>
+              <input id="time" name="time" type="time" />
+            </div>
+            <textarea name="notes" placeholder="Location, vibe, special requests…"></textarea>
+            <div class="actions">
+              <button class="btn fill" type="submit">Request Booking</button>
+              <span style="color:var(--ink-60)">No payment required now.</span>
+            </div>
+          </form>
+        </div>
+
+        <div class="calendar-embed" style="margin-top:16px">
+          <h3 style="margin:0 0 8px">Live availability (optional)</h3>
+          <p class="subtitle">Replace this box with your embedded Calendly/TidyCal widget.</p>
+          <!-- Example Calendly embed placeholder
+          <div class="calendly-inline-widget" data-url="https://calendly.com/your-link" style="min-width:320px;height:700px"></div>
+          <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+          -->
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section" style="background:rgba(79,121,66,.06)">
+      <div class="container about">
+        <img src="https://images.unsplash.com/photo-1500336624523-d727130c3328?q=80&w=1600&auto=format&fit=crop" alt="Ruta behind the camera" />
+        <div>
+          <h2 class="title" style="font-size:2rem">Meet Ruta</h2>
+          <p class="subtitle">I tell real stories through gentle direction and natural light. Based in the UK, available for travel.</p>
+          <p>From intimate portraits to exuberant weddings, my approach is relaxed, collaborative, and detail‑obsessed. Let’s plan something beautiful together.</p>
+          <a class="btn" href="#booking">Start your booking</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <div class="container">
+        <h2 class="title" style="font-size:2rem">Contact</h2>
+        <div class="card pad">
+          <p><strong>Email:</strong> hello@rutasphotography.com</p>
+          <p><strong>Instagram:</strong> @rutasphotography</p>
+          <p class="subtitle">Prefer WhatsApp? Add a button here that opens a chat with a pre‑filled message.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;gap<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ruta’s Photography — Book a Session</title>
+  <meta name="description" content="Book your session with Ruta’s Photography. Fast, simple order form." />
+  <style>
+    :root{
+      --fern:#4F7942; --fern-700:#416736;
+      --cream:#DFCAA0; /* warm cream */
+      --ink:#2E2E2E; --ink-60:rgba(46,46,46,.65);
+      --paper:#FFFFFF; --shadow:0 10px 26px rgba(0,0,0,.08);
+      --radius:18px;
+    }
+    html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;color:var(--ink);background:var(--cream)}
+    a{color:inherit;text-decoration:none}
+    .container{width:min(960px, 92vw); margin: 28px auto 64px}
+    header{
+      background:linear-gradient(180deg, rgba(223,202,160,.95), rgba(223,202,160,.70));
+      position:sticky; top:0; z-index:10; backdrop-filter: blur(6px);
+      padding:18px 0; box-shadow: 0 2px 0 rgba(0,0,0,.03)
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;width:min(960px,92vw);margin:0 auto}
+    .logo{font-weight:900;letter-spacing:.4px}
+    .badge{background:var(--fern);color:#fff;padding:.36rem .7rem;border-radius:999px;margin-left:.4rem}
+    .hero{padding:36px 0 10px}
+    h1{font-size:clamp(28px,3.2vw,42px);margin:0 0 6px}
+    .subtitle{color:var(--ink-60);margin:.2rem 0 1.1rem}
+    .card{background:var(--paper);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .pad{padding:26px}
+    .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}}
+    .btn{display:inline-block;padding:.9rem 1.15rem;border-radius:999px;border:2px solid var(--fern);color:var(--fern);font-weight:800;transition:.16s}
+    .btn:hover{transform:translateY(-1px)}
+    .btn.fill{background:var(--fern);color:#fff}
+    form{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    label{font-weight:700;font-size:.92rem}
+    input, select, textarea{
+      padding:.9rem;border-radius:12px;border:1.5px solid rgba(0,0,0,.12);background:#fff;font-size:1rem
+    }
+    textarea{grid-column:span 2; min-height:140px}
+    .actions{grid-column:span 2; display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+    .helper{color:var(--ink-60); font-size:.95rem}
+    .note{font-size:.9rem; color:var(--ink-60); margin-top:10px}
+    footer{padding:40px 0 70px;border-top:1px solid rgba(0,0,0,.08)}
+    .ok{background:#eefaf0;border:1px solid #c7e6c9;color:#0b7a28;padding:.6rem .8rem;border-radius:12px}
+    .err{background:#fff1f2;border:1px solid #f5c6cb;color:#b00020;padding:.6rem .8rem;border-radius:12px}
+
+    /* --- Thank-you modal --- */
+    .modal-backdrop{
+      position:fixed; inset:0; background:rgba(0,0,0,.45);
+      display:none; align-items:center; justify-content:center; z-index:1000;
+    }
+    .modal{
+      background:#fff; border-radius:20px; box-shadow:0 20px 60px rgba(0,0,0,.2);
+      width:min(520px,92vw); padding:28px; text-align:center;
+    }
+    .modal h2{margin:0 0 8px; font-size:clamp(20px,3vw,28px)}
+    .modal p{margin:0 0 16px; color:var(--ink-60)}
+    .modal .btn{margin-top:6px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="logo">Ruta’s <span class="badge">Photography</span></div>
+      <nav><a href="https://rutaphotography.com">rutaphotography.com</a></nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="grid">
+        <div class="card pad">
+          <h1>Book a Session</h1>
+          <p class="subtitle">Fill this in — your request goes straight to <strong>rutasphotography@gmail.com</strong>.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+            <a class="btn fill" href="#order">Jump to form</a>
+            <a class="btn" href="mailto:rutasphotography@gmail.com?subject=Booking%20Request&body=Hi%20Ruta,%0A%0AName:%0AEmail:%0ASession:%0APreferred%20date:%0APreferred%20time:%0ANotes:%0A">Email instead</a>
+          </div>
+        </div>
+        <div class="card" aria-hidden="true">
+          <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1600&auto=format&fit=crop"
+               alt="Camera and photo setup" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:18px"/>
+        </div>
+      </div>
+    </section>
+
+    <!-- ORDER / BOOKING FORM (unchanged) -->
+    <section id="order" class="card pad" style="margin-top:22px">
+      <form action="https://formsubmit.co/rutasphotography@gmail.com" method="POST">
+        <!-- Visible fields -->
+        <div>
+          <label for="name">Full name *</label>
+          <input id="name" name="name" required placeholder="Your full name" />
+        </div>
+
+        <div>
+          <label for="email">Email *</label>
+          <input id="email" name="email" type="email" required placeholder="you@example.com" />
+        </div>
+
+        <div>
+          <label for="phone">Phone</label>
+          <input id="phone" name="phone" type="tel" placeholder="+44…" />
+        </div>
+
+        <div>
+          <label for="session_type">Session type *</label>
+          <select id="session_type" name="session_type" required>
+            <option value="" disabled selected>Select a session</option>
+            <option>Portrait</option>
+            <option>Event</option>
+            <option>Wedding</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="preferred_date">Preferred date *</label>
+          <input id="preferred_date" name="preferred_date" type="date" required />
+        </div>
+
+        <div>
+          <label for="preferred_time">Preferred time</label>
+          <input id="preferred_time" name="preferred_time" type="time" />
+        </div>
+
+        <div style="grid-column:span 2">
+          <label for="notes">Notes</label>
+          <textarea id="notes" name="notes" placeholder="Location, vibe, special requests…"></textarea>
+        </div>
+
+        <!-- FormSubmit options (hidden) -->
+        <input type="hidden" name="_subject" value="New Booking — Ruta’s Photography" />
+        <!-- Keep _next pointing to this page’s #thanks anchor -->
+        <input type="hidden" name="_next" value="https://rutaphotography.com/#thanks" />
+        <input type="hidden" name="_autoresponse"
+               value="Thanks for your booking request! We’ve received it and will confirm availability shortly. — Ruta’s Photography" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+
+        <div class="actions">
+          <button class="btn fill" type="submit">Send booking request</button>
+          <span class="helper">No payment required now.</span>
+        </div>
+
+        <p class="note">By submitting, you agree to be contacted about your session. We’ll only use your details for booking and service updates.</p>
+      </form>
+    </section>
+
+    <!-- Anchor that FormSubmit returns to -->
+    <section id="thanks" class="ok" style="margin-top:16px">
+      If you see this after submitting, your message was sent. Check your email for a confirmation from us.
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap">
+      <small>© <span id="y"></span> Ruta’s Photography — <a href="https://rutaphotography.com">rutaphotography.com</a></small>
+      <small><a href="mailto:rutasphotography@gmail.com">rutasphotography@gmail.com</a></small>
+    </div>
+  </footer>
+
+  <!-- Thank-you modal (shown after successful submit) -->
+  <div class="modal-backdrop" id="thankyou-backdrop" role="dialog" aria-modal="true" aria-labelledby="thanks-title">
+    <div class="modal">
+      <h2 id="thanks-title">Thank you! 🎉</h2>
+      <p>Your booking request was sent successfully. We’ll email you shortly.</p>
+      <button class="btn fill" id="thanks-close">Back to homepage</button>
+    </div>
+  </div>
+
+  <script>
+    // Year stamp
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // If we landed on #thanks (FormSubmit redirect), show popup, then return to home
+    (function(){
+      const showModal = () => {
+        const bd = document.getElementById('thankyou-backdrop');
+        if (!bd) return;
+        bd.style.display = 'flex';
+        // After a short delay, remove #thanks and scroll to top
+        const goHome = () => {
+          // remove hash without reloading
+          const cleanUrl = window.location.origin + window.location.pathname + window.location.search;
+          history.replaceState(null, '', cleanUrl);
+          // hide modal and scroll up
+          bd.style.display = 'none';
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+        // auto-close after 2.8s
+        const timer = setTimeout(goHome, 2800);
+        // allow manual close immediately
+        document.getElementById('thanks-close').addEventListener('click', () => {
+          clearTimeout(timer);
+          goHome();
+        });
+        // also close on backdrop click
+        bd.addEventListener('click', (e)=>{ if(e.target === bd){ clearTimeout(timer); goHome(); }});
+      };
+
+      // Detect success via hash
+      if (window.location.hash === '#thanks') {
+        showModal();
+      }
+    })();
+  </script>
+</body>
+</html>
+<style>
+  footer {
+    padding: 10px;
+    background: #f8f8f8;
+  }
+</style>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
